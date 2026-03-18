@@ -1,6 +1,7 @@
 "use client"
 import { useProductsData } from "@/src/hooks/useProductsData";
 import { ProductsListItem } from "./ProductsListItem";
+import { Title } from "@/src/components/Title";
 
 export const ProductsList = () => {
     const products = useProductsData();
@@ -9,7 +10,7 @@ export const ProductsList = () => {
 
     return (
         <section className="w-full flex flex-col my-8 p-2">
-            <h2 className="text-black font-bold">Lista de Productos</h2>
+            <Title text='Products list'/>
             <ul className="w-full h-auto flex flex-wrap">
                 {
                     products.map(product => (

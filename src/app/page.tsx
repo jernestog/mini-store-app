@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Hero } from "../components/home/Hero";
-import { ProductsList } from "../components/home/ProductsList";
+import { Hero } from "./home/Hero";
+import { ProductsList } from "./home/ProductsList";
 
 
 

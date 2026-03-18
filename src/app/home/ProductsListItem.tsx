@@ -1,6 +1,9 @@
 "use client"
 import Image from "next/image"
+import Link from "next/link"
 import { Product } from "@/src/interfaces/intefaces"
+import { Button } from "@/src/components/Button"
+
 
 
 type ProducListItemProp = {
@@ -8,6 +11,7 @@ type ProducListItemProp = {
 }
 
 export const ProductsListItem = ({product }: ProducListItemProp) => {
+    
   return (
     <div className="w-50 h-auto flex flex-col items-center justify-between
              m-2 p-2 border border-black">
@@ -26,9 +30,12 @@ export const ProductsListItem = ({product }: ProducListItemProp) => {
             <span className="font-extrabold  text-2xl">
                 $ {product.price}
             </span>
-            <button className="text-sm bg-black text-white p-2 rounded">
-                Agregar a carrito
-            </button>
+
+            <Link href={`/home/${product.id}`}>
+                <Button text='Detalle'>
+                    
+                </Button>
+            </Link>
         </div>
 
     </div>

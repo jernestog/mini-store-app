@@ -1,3 +1,4 @@
+
 export const fecthData = async (URL: string) => {
     const data = await fetch(URL);
 

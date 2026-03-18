@@ -13,3 +13,13 @@ export const useProductsData = () => {
     return products;
     
 }
+export const useSingleProductData = (id: string) => {
+    const [ product, setProduct ] = useState<Product>()
+
+    useEffect(() => {
+        fecthData(`https://fakestoreapi.com/products/${id}`).then(setProduct)
+    }, [])
+    return product;
+    
+}
+
