@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useSingleProductData } from "@/src/hooks/useProductsData";
 import { useCartState } from "@/src/stores/cartStore";
+import { toast } from "react-toastify";
 
 
 
@@ -28,8 +29,9 @@ type ProductDetailProp = {
             count : count,
             amount : product.price * count,
         }
-        console.log(count)
+        
         setProduct(id, productCart)
+        toast.success('Added to cart!')
     }
   return (
      <div className="flex flex-col pb-6 justify-center items-center">

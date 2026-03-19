@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { getToken, removeToken } from "@/src/lib/auth"
+import { DashboardTable } from "./DashboardTable"
 
 export default function Dashboard() {
   const router = useRouter()
@@ -27,7 +28,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Dashboard (Privado)</h1>
+      <DashboardTable/>
       <button onClick={handleLogout}>Cerrar sesión</button>
     </div>
   )

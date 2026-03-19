@@ -5,7 +5,7 @@ export const Hero = () => {
         <section className="relative w-full h-40 bg-white ">
           <div className="relative h-full z-10 flex items-end">
                  <h2 className="font-bold text-black m-2">
-                    Construimos tus posibilidades...
+                    Building your personality...
                 </h2>
           </div>
             <Image src="/resourses/images/hero-image.jpg"

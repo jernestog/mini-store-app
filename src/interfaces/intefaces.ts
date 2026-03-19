@@ -6,7 +6,7 @@ export interface Product {
     category : string
     image : string
     rating : {
-        rate : string
+        rate : number
         count : number
     }
 
