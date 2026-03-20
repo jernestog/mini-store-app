@@ -1,6 +1,7 @@
 import {create} from "zustand";
 import { persist } from "zustand/middleware";
 import { CartProduct } from "../interfaces/intefaces";
+import { stat } from "fs";
 
 
 type CartStateType = {
@@ -9,6 +10,7 @@ type CartStateType = {
     
     setProduct : (id: string, product : CartProduct ) => void
     removeProduct : (id: string) => void
+    clearCart : () => void
     
 }
 
@@ -47,12 +49,17 @@ export const useCartState = create<CartStateType>()(
                 newProducts = state.products.map(p => p.id == id ? {
                     ...p, count : p.count - 1,
                         amount : p.amount - p.price
-                } : {...p})
+                } : {...p}).filter(p => p.count > 0)
                 
                 const totalCartAmount = newProducts.reduce((acc , product) => acc + product.amount, 0 )
                 return {products : newProducts , totalCartAmount}
             })
-             
+        },
+        clearCart : () => {
+            set(() => ({
+                products : [],
+                totalCartAmount : 0
+            }))
         }
         
     })}, {

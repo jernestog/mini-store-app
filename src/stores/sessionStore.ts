@@ -1,11 +1,13 @@
 import {create} from "zustand";
 import { persist } from "zustand/middleware";
 
-import { User } from "../interfaces/intefaces";
 
+type UserSession  = {
+    username : string, role: string
+}
 type SessionState = {
-    user : User,
-    setUserSession : (user : User) => void
+    user : UserSession,
+    setUserSession : (user : UserSession ) => void
     logout : () => void
 }
 

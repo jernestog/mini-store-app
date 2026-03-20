@@ -1,17 +1,13 @@
 
 import { NextResponse } from "next/server";
-
-const users = [
-  { id: 1, username: 'pedrito', password: '0000', role: 'admin' },
-  { id: 2, username: 'sancho96', password: '4544', role: 'customer' }
-];
+import { users } from "@/src/data/usersData";
 
 export async function POST(req: Request) {
   try {
     const { username, password } = await req.json(); 
 
     const user = users.find(u => u.username === username && u.password === password);
-
+    
     if (!user) {
       return NextResponse.json({success: false, message: 'User not found' }, { status: 401 });
     }

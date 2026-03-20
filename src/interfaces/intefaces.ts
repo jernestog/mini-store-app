@@ -22,6 +22,10 @@ export interface CartProduct {
 }
 
 export interface User  {
+    id : string
+    name : string
     username : string
+    password : string
     role : string
+    
 }

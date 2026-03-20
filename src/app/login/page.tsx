@@ -1,5 +1,5 @@
 "use client"
-
+import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { login2 } from "@/src/lib/api"
@@ -31,9 +31,10 @@ const Login = () => {
                  
                 if (!data.success){
                     setError(data.message)
+                    console.log(data)
                 }else {
                     
-                    router.push('/dashboard');
+                    router.push('/');
                     setUserSession({
                         username : data.username,
                         role : data.role
@@ -73,6 +74,10 @@ const Login = () => {
                       error == "" ? <></> : <span className="text-red-300 font-bold text-sm">{error}</span>
                     }
                 
+                    <Link href={'/register'}>
+                    <span>Don't have an account? Sign up</span>
+                    </Link>
+
                 <button type="submit" className="bg-black text-white rounded px-6 py-1">
                     Login
                 </button>
