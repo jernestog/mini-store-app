@@ -22,6 +22,7 @@ export const ProductsListItem = ({product }: ProducListItemProp) => {
             <Image  src={product.image}
                     alt={`${product.title} image`}
                     fill
+                    sizes="(max-width: 520px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-contain"
                  >
             </Image>

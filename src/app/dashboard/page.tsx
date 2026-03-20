@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { DashboardTable } from "./DashboardTable"
+import Spinner from "@/src/components/Spinner"
 
 export default function Dashboard() {
   const router = useRouter()
@@ -15,7 +16,7 @@ export default function Dashboard() {
       .then(data => {
         if (!data.user || data.user.role !== 'admin'){
           router.push('/')
-          console.log(data)
+          
         }else{
           setUser(data.user)
           setLoading(false)
@@ -23,19 +24,12 @@ export default function Dashboard() {
       })
   }, [])
 
-  const handleLogout = async () => {
-    const resp = await fetch('api/auth/logout', {method : 'POST'})
-    if(resp.ok) {
-      router.push('/')
-    }
-  }
 
-  if(loading || user.role !== 'admin') return <h2>Verificando usuario...</h2>
+  if(loading || user.role !== 'admin') return  <div className="flex flex-col place-self-center"><Spinner/> Loading</div>
 
   return (
     <div>
       <DashboardTable/>
-      <button onClick={handleLogout}>Cerrar sesión</button>
     </div>
   )
 }

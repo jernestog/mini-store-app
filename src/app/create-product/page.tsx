@@ -49,7 +49,7 @@ export const Page = () => {
             <section className="min-h-full w-full flex items-center justify-center">
             <div>
                 <form action="#" onSubmit={handleSubmit}>
-                    <div>
+                    <div className="my-2">
                         <label htmlFor="title">Product title :</label>
                         <div className="p1 border rounded">
                         <input type="text"
@@ -61,7 +61,7 @@ export const Page = () => {
                         </div>
                         
                     </div>
-                    <div>
+                    <div className="my-2">
                         <label htmlFor="price">Price :</label>
                         <div className="p1 border rounded">
                         <input type="number"
@@ -72,7 +72,7 @@ export const Page = () => {
                                 />
                         </div>
                     </div>
-                    <div>
+                    <div className="my-2">
                         <label htmlFor="description">Product description :</label>
                         <div className="p1 border rounded">
                         <textarea 
@@ -84,7 +84,7 @@ export const Page = () => {
                                 />
                         </div>
                     </div>
-                    <div>
+                    <div className="my-2">
                         <label htmlFor="category">Category:</label>
                         <div className="p1 border rounded">
                         <input type="text"
@@ -95,7 +95,7 @@ export const Page = () => {
                                 />
                         </div>
                     </div>
-                    <div>
+                    <div className="my-2">
                         <label htmlFor="image">Image (URL):</label>
                         <div className="p1 border rounded">
                         <input type="text"
@@ -106,7 +106,7 @@ export const Page = () => {
                                 />
                         </div>
                     </div>
-                    <button type="submit" className="bg-black text-white rounded px-6 py-1">
+                    <button type="submit" className="bg-black text-white rounded px-6 py-1 my-2">
                         Agregar
                     </button>
                 </form>

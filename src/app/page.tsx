@@ -14,14 +14,15 @@ export default function Home() {
     const [productsFiltered, setProductsFiltered] = useState<Product[]>([]) 
     const products = useProductsData()
 
-     if(!products) return <div><Spinner/> Loading</div>
+     if(!products) return <div className="flex flex-col place-self-center"><Spinner/> Loading</div>
      
     const productsList = productsFiltered.length > 0 ? productsFiltered : products
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-100 font-sans text-black">
      
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center pb-2  bg-zinc-100 sm:items-start">
+      <main className="flex min-h-screen w-full sm:w-3/5  flex-col bg-zinc-100 
+                        items-start  pb-2  sm:items-center">
        <Hero/>
        <SearchForm filter={filter} setFilter={setFilter} products={products} setProductsFiltered={setProductsFiltered}/>
        <ProductsList products={productsList}/>

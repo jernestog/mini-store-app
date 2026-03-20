@@ -30,13 +30,13 @@ const CartProductItem = ({productCart} : CartProductProp ) => {
             ></Image>
         </div>
         <div className="">
-            <button className="bg-black text-sm font-bold text-white py-1 px-4"
+            <button className="bg-black text-sm font-bold text-white py-1 px-4 mx-2"
                     disabled={count == 1}
                     onClick={removeProductCart}> - </button>
                 <span className="text-sm font-bold">
                     {count}
                 </span>
-           <button className="bg-black text-sm font-bold text-white py-1 px-4"
+           <button className="bg-black text-sm font-bold text-white py-1 px-4 mx-2"
                     onClick={addProduct}> + </button>
         </div>
 

@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation"
 import { useSessionState } from "@/src/stores/sessionStore"
 import { Title } from "@/src/components/Title"
+import Image from "next/image"
 
 
 const Page = () => {
@@ -18,8 +19,8 @@ const Page = () => {
   }
 
   return (
-    <div>
-        <Title text="Mi cuenta"></Title>
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 items-center">
+        <Title text="My Account"/>
         
           {
           sessionUser.username !== '' &&
@@ -28,12 +29,18 @@ const Page = () => {
             <span >Session started :<strong> { sessionUser.username }</strong></span>
           </div>
           }
+        <Image src={"/resourses/images/account-img.webp"}
+                        alt="cart-img"
+                        width={300}
+                        height={400}
+                        className="mt-8" >
+        </Image>
         
-        <button  className="bg-black text-white rounded px-6 py-1"
+        <button  className="bg-black text-white rounded px-6 py-1 my-8"
                  onClick={handleLogout}>
-           Cerrar sesión
+           Close session
         </button>
-    </div>
+    </section>
   )
 }
 

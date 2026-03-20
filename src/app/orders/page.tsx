@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { OrderList } from "./OrderList"
+import Spinner from "@/src/components/Spinner"
 
 export default function Orders() {
   const router = useRouter()
@@ -23,11 +24,11 @@ export default function Orders() {
   }, [])
 
   
-  if(loading || user.role !== 'admin') return <h2>Verificando usuario...</h2>
+  if(loading || user.role !== 'admin') return <div className="flex flex-col place-self-center"><Spinner/> Loading</div>
 
   return (
-    <div>
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <OrderList/>
-    </div>
+    </section>
   )
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { login2 } from "@/src/lib/api"
 import { useSessionState } from "@/src/stores/sessionStore"
+import Spinner from "@/src/components/Spinner"
 
 
 const Login = () => {
@@ -43,13 +44,13 @@ const Login = () => {
                 }
         }
 
-        if(loading) return <span>Loading</span>
+        if( loading ) return <div className="flex flex-col place-self-center"><Spinner/> Loading</div>
 
     return (
         <section className="min-h-full w-full flex items-center justify-center">
         <div>
             <form action="#" onSubmit={handleSubmit}>
-                <div>
+                <div className="my-2">
                     <label htmlFor="username">Username :</label>
                     <div className="p1 border rounded">
                     <input type="text"
@@ -60,7 +61,7 @@ const Login = () => {
                     </div>
                     
                 </div>
-                <div>
+                <div className="my-2">
                     <label htmlFor="password">Pasword :</label>
                     <div className="p1 border rounded">
                     <input type="password"
@@ -79,7 +80,7 @@ const Login = () => {
                     <span>Don't have an account? Sign up</span>
                     </Link>
 
-                <button type="submit" className="bg-black text-white rounded px-6 py-1">
+                <button type="submit" className="bg-black text-white rounded px-6 py-1 my-2">
                     Login
                 </button>
                 </div>

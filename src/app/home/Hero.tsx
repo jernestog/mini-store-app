@@ -12,6 +12,7 @@ export const Hero = () => {
                    alt="Hero image"
                    className="w-full object-cover "
                    fill
+                   sizes="(max-width: 1024px) 100vw, 80vw"
                    priority>
 
             </Image>

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { register } from "@/src/lib/api"
 import { useSessionState } from "@/src/stores/sessionStore"
-import { useUsersState } from "@/src/stores/usersStore"
 import Spinner from "@/src/components/Spinner"
 import { toast } from "react-toastify"
         
@@ -39,19 +38,20 @@ const router = useRouter()
                            
                             router.push('/');
                             setUserSession({
+                                name,
                                 username : data.username,
                                 role : data.role
                             })
                         }
                 }
         
-                if(loading) return <div><Spinner/>Loading</div>
+             if( loading ) return <div className="flex flex-col place-self-center"><Spinner/> Loading</div>
         
             return (
                 <section className="min-h-full w-full flex items-center justify-center">
                 <div>
                     <form action="#" onSubmit={handleSubmit}>
-                        <div>
+                        <div className="my-2">
                             <label htmlFor="name">Name:</label>
                             <div className="p1 border rounded">
                             <input type="text"
@@ -61,7 +61,7 @@ const router = useRouter()
                                     onChange={(e) => setName(e.target.value)}/>
                             </div>  
                         </div>
-                        <div>
+                        <div className="my-2">
                             <label htmlFor="username">Username :</label>
                             <div className="p1 border rounded">
                             <input type="text"
@@ -72,7 +72,7 @@ const router = useRouter()
                             </div>
                             
                         </div>
-                        <div>
+                        <div className="my-2">
                             <label htmlFor="password">Pasword :</label>
                             <div className="p1 border rounded">
                             <input type="password"
@@ -87,7 +87,7 @@ const router = useRouter()
                               error == "" ? <></> : <span className="text-red-300 font-bold text-sm">{error}</span>
                             }
                         
-                        <button type="submit" className="bg-black text-white rounded px-6 py-1">
+                        <button type="submit" className="bg-black text-white rounded px-6 py-1 my-2">
                             Login
                         </button>
                         </div>

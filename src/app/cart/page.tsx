@@ -1,11 +1,11 @@
 'use client'
-import Link from "next/link";
+
 import { useCartState } from "@/src/stores/cartStore";
 import { Title } from "@/src/components/Title";
-import { Button } from "@/src/components/Button";
 import CartProductItem from "./CartProductItem.";
 import { saveOrder } from "@/src/lib/api";
 import { useRouter } from "next/navigation";
+import { CartEmpty } from "./CartEmpty";
 
 import { useSessionState } from "@/src/stores/sessionStore";
 import { toast } from "react-toastify";
@@ -33,10 +33,11 @@ import { toast } from "react-toastify";
         
   }
 
-  if(totalCartAmount == 0) return <div className="flex flex-col"> <span>Cart empty</span> <Link href={'/'}><Button text="Start  to buy!" ></Button></Link></div>
+  if(totalCartAmount == 0) return <CartEmpty/>
 
   return (
-    <div className="min-w-full">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
       <Title text="My Cart"/>
       {
           sessionUser.username !== '' &&
@@ -45,7 +46,7 @@ import { toast } from "react-toastify";
             <span >Session started :<strong> { sessionUser.name }</strong></span>
           </div>
           }
-      <div>
+      <div className="m-2">
         {
           productsCart.map(productCart => (
               <CartProductItem key={productCart.id} productCart={productCart}/>
@@ -53,17 +54,21 @@ import { toast } from "react-toastify";
         }
 
       </div>
-      <div className="flex justify-between items center p-4">
+      <div className="flex w-full justify-between items center p-4">
+        <div>
         <Title text='Total cart'/>
         <span className="text-2xl font-bold"> $ {totalCartAmount.toFixed(2)}</span>
-        <button className="bg-black text-white text-sm rounded font-bold"
+        </div>
+        <div>
+        <button className="bg-black text-white text-sm rounded font-bold px-4 py-1 m-2"
            onClick={cleanCart}>
           Clean Cart
         </button >
                
-        <button onClick={sendOrder}>
+        <button onClick={sendOrder} className="bg-zinc-200 text-black rounded font-bold px-4 py-1 m-2">
              Buy !
         </button>
+        </div>
       </div>
     </div>
   )

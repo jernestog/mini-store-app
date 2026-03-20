@@ -12,8 +12,6 @@ export const ProductsList = ({products} : ProducsListProp) => {
     const productsPerPage = 6;
     const [page, setPage] = useState(1)
 
-   
-
     const startPagination = (page - 1) * productsPerPage
     const endPagination = startPagination + productsPerPage
 
@@ -21,7 +19,8 @@ export const ProductsList = ({products} : ProducsListProp) => {
     
 
     return (
-        <section className="w-full flex flex-col my-8 p-2 ">
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  
             <Title text='Products list'/>
             <ul className="w-full h-auto flex flex-wrap justify-center">
                 {
