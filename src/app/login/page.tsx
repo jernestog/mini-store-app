@@ -36,6 +36,7 @@ const Login = () => {
                     
                     router.push('/');
                     setUserSession({
+                        name : data.name,
                         username : data.username,
                         role : data.role
                     })

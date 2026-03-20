@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       return NextResponse.json({success: false, message: 'User not found' }, { status: 401 });
     }
 
-    const response = NextResponse.json({success : true,  message: 'Login Success', username: user.username, role: user.role });
+    const response = NextResponse.json({success : true,  message: 'Login Success', name: user.name, username: user.username, role: user.role });
 
     response.cookies.set('token', user.id.toString(), {
       httpOnly: true,

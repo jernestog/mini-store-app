@@ -1,9 +1,5 @@
 import { NextResponse } from "next/server";
-
-const users = [
-  { id: 1, username: 'pedrito', password: '0000', role: 'admin' },
-  { id: 2, username: 'sancho96', password: '4544', role: 'customer' }
-];
+import { users } from "@/src/data/usersData";
 
 export async function GET(req: NextResponse) {
     const token = req.cookies.get('token')?.value

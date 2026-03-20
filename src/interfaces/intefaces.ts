@@ -27,5 +27,9 @@ export interface User  {
     username : string
     password : string
     role : string
-    
+}
+
+export interface Order {
+    client : string
+    products : CartProduct[]
 }

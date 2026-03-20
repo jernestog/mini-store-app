@@ -3,7 +3,9 @@ import { persist } from "zustand/middleware";
 
 
 type UserSession  = {
-    username : string, role: string
+    name : string,
+    username : string,
+    role: string
 }
 type SessionState = {
     user : UserSession,
@@ -14,6 +16,7 @@ type SessionState = {
 export const useSessionState = create<SessionState>() (
     persist((set) => ({
         user : {
+            name : '',
             username : '',
             role : ''
         },
@@ -24,6 +27,7 @@ export const useSessionState = create<SessionState>() (
         },
         logout  : () => set({
             user : {
+                name: '',
                 username : '',
                 role: '',
             }

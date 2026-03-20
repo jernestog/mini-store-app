@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { DashboardTable } from "./DashboardTable"
+import { OrderList } from "./OrderList"
 
-export default function Dashboard() {
+export default function Orders() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState({role: "" })
@@ -15,7 +15,6 @@ export default function Dashboard() {
       .then(data => {
         if (!data.user || data.user.role !== 'admin'){
           router.push('/')
-          console.log(data)
         }else{
           setUser(data.user)
           setLoading(false)
@@ -23,19 +22,12 @@ export default function Dashboard() {
       })
   }, [])
 
-  const handleLogout = async () => {
-    const resp = await fetch('api/auth/logout', {method : 'POST'})
-    if(resp.ok) {
-      router.push('/')
-    }
-  }
-
+  
   if(loading || user.role !== 'admin') return <h2>Verificando usuario...</h2>
 
   return (
     <div>
-      <DashboardTable/>
-      <button onClick={handleLogout}>Cerrar sesión</button>
+        <OrderList/>
     </div>
   )
 }

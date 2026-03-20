@@ -1,4 +1,5 @@
 import { User } from "../interfaces/intefaces"
+import { Order } from "../interfaces/intefaces"
 
 export const login = async ( username:string, password:string) => {
     const res = await fetch('https://fakestoreapi.com/auth/login', {
@@ -46,3 +47,17 @@ export const register = async (user : User) => {
     return await res.json()
 }
 
+export const saveOrder = async (order: Order) => {
+    const res = await fetch('/api/order', {
+        method : 'POST',
+        headers : {
+            "Content-Type" : "application/json"
+        },
+        body : JSON.stringify(order)
+    })
+    if(!res.ok) {
+        console.log('Error')
+    }
+    console.log(res)
+    return await res.json()
+}

@@ -13,6 +13,7 @@ export const useProductsData = () => {
     return products;
     
 }
+
 export const useSingleProductData = (id: string) => {
     const [ product, setProduct ] = useState<Product>()
 
