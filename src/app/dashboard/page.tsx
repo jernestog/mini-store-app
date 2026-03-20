@@ -2,29 +2,34 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { getToken, removeToken } from "@/src/lib/auth"
 import { DashboardTable } from "./DashboardTable"
 
 export default function Dashboard() {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState({role: "" })
 
   useEffect(() => {
-    const token = getToken()
-
-    if (!token) {
-      router.push("/login")
-    }else {
-        setLoading(false)
-    }
+      fetch('api/auth/me')
+      .then(resp => resp.json())
+      .then(data => {
+        if (!data.user || data.user.role !== 'admin'){
+          router.push('/')
+        }else{
+          setUser(data.user)
+          setLoading(false)
+        }
+      })
   }, [])
 
-  const handleLogout = () => {
-    removeToken()
-    router.push("/login")
+  const handleLogout = async () => {
+    const resp = await fetch('api/auth/logout', {method : 'POST'})
+    if(resp.ok) {
+      router.push('/')
+    }
   }
 
-  if(loading) return <h2>Verificando usuario...</h2>
+  if(loading || user.role !== 'admin') return <h2>Verificando usuario...</h2>
 
   return (
     <div>

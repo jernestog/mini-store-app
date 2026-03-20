@@ -1,15 +1,18 @@
 "use client"
 import { useState } from "react";
-import { useProductsData } from "@/src/hooks/useProductsData";
 import { ProductsListItem } from "./ProductsListItem";
 import { Title } from "@/src/components/Title";
+import { Product } from "@/src/interfaces/intefaces";
 
-export const ProductsList = () => {
-    const products = useProductsData();
+type ProducsListProp = {
+    products : Product[]
+}
+export const ProductsList = ({products} : ProducsListProp) => {
+    
     const productsPerPage = 6;
     const [page, setPage] = useState(1)
 
-    if(!products) return <div>Error al cargar products</div>
+   
 
     const startPagination = (page - 1) * productsPerPage
     const endPagination = startPagination + productsPerPage
@@ -28,6 +31,7 @@ export const ProductsList = () => {
                     )
                 }
             </ul>
+
             <div className="w-full flex justify-around my-8">
                 <button className="bg-black text-white rounded py-2 px-4"
                 disabled={page == 1}

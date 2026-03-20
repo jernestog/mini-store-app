@@ -1,24 +1,47 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { login } from "@/src/lib/api"
-import { saveToken } from "@/src/lib/auth"
+import { login2 } from "@/src/lib/api"
+import { useSessionState } from "@/src/stores/sessionStore"
 
 
 const Login = () => {
         const [username, setUsername] = useState('')
         const [password, setPassword] = useState('')
+        const [loading, setLoading] = useState(true)
+        const [error, setError] = useState('')
+        const userSession = useSessionState(state => state.user)
+        const setUserSession = useSessionState(state => state.setUserSession)
         const router = useRouter()
+
+        useEffect(() => {
+            if (userSession?.role === 'admin' || userSession?.role === 'customer') {
+            router.replace('/my-account')
+            }else{
+                setLoading(false)
+            }
+            
+        }, [userSession, router]);
 
         const handleSubmit  = async (e : React.FormEvent<HTMLFormElement>)  => {
             e.preventDefault();
-
-            const data = await login(username, password)
-            saveToken(data)
-            router.push('/dashboard')
+            
+                 const data = await login2(username, password);
+                 
+                if (!data.success){
+                    setError(data.message)
+                }else {
+                    
+                    router.push('/dashboard');
+                    setUserSession({
+                        username : data.username,
+                        role : data.role
+                    })
+                }
         }
 
+        if(loading) return <span>Loading</span>
 
     return (
         <section className="min-h-full w-full flex items-center justify-center">
@@ -45,9 +68,15 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                 </div>
+                <div className="flex flex-col">
+                    {
+                      error == "" ? <></> : <span className="text-red-300 font-bold text-sm">{error}</span>
+                    }
+                
                 <button type="submit" className="bg-black text-white rounded px-6 py-1">
                     Login
                 </button>
+                </div>
 
 
             </form>

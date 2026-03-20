@@ -20,3 +20,8 @@ export interface CartProduct {
     amount : number
     count: number
 }
+
+export interface User  {
+    username : string
+    role : string
+}
