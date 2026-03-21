@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+1 - Clona el repositorio :  https://github.com/jernestog/mini-store-app.git
+2 - Entra  a la carpeta del proyecto : mini-store-app
+3 - Instala las dependencias : npm i
+4 - Ejecuta : npm run dev
+5 - Abre el navegador en : http://localhost:3000
 
-## Getting Started
+IMPORTANTE : para usuario admin y tener acceso al dashboard de productos y las ordenes 
+se debe usar estas credenciales :
 
-First, run the development server:
+Admin :
+user : pedrito - password: '0000'
+Customer :
+user : sancho96 - password: '4544'
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Los usuaios nuevos pueden ser unicamente customer
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Funcionalidad basica : 
+-Listado de productos
+-Formulario de filtrado por nombre,  categoria y ordenado alfabeticamente y por precio
+-Detalle de productos
+-Agregar productos al carrito
+-Gestionar los productos agregados al carrito
+-Unicamente usuarios logeados pueden comprar ( generar orden de compra )
+-Login de usuarios existentes ( con credenciales indicadas anteriormente )
+-Registrar usuarios nuevos ( todos los usuarios nuevos son customer )
+-Unicamente el usuario admin puede ingresar al panel de gestion de productos
+-En el panel de gestion de productos se listan, cada producto puede ser editado, eliminado (No impacta el fronted
+pero se envia la solicitud correspondiente a la API para su accion )
+-Unicamente el usuario admin puede ingresar al listado de ordenes generadas por usuarios ( Importante no
+parar el servidor para visualizar ordenes de compra hechas por otros usuarios)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
